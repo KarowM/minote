@@ -10,11 +10,11 @@ class NotesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
 
-        val noteList: ListView = findViewById(R.id.notes)
+//        val noteList: ListView = findViewById(R.id.recyclerView)
 
-        val listItems = ArrayList<String>()
-        listItems.add("hello")
-        listItems.add("world")
-        noteList.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
+//        val listItems = ArrayList<String>()
+//        listItems.add("hello")
+//        listItems.add("world")
+//        noteList.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
     }
 }
