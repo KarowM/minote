@@ -22,8 +22,8 @@ class NotesActivity : AppCompatActivity() {
         noteRecyclerView = findViewById(R.id.recyclerView)
         noteRecyclerView.layoutManager = LinearLayoutManager(this)
         noteRecyclerView.adapter = NotesAdapter(notesList)
-        notesList.add(Note("The first note!"))
-        notesList.add(Note("The second note!"))
+        notesList.add(Note("The first note!", "First note body"))
+        notesList.add(Note("The second note!", "Second note Body"))
 
         val queue = Volley.newRequestQueue(this)
         val url = "URL"
@@ -35,7 +35,7 @@ class NotesActivity : AppCompatActivity() {
             { response ->
                 run {
                     for (i in 0 until response.length()) {
-                        notesList.add(Note(response.getJSONObject(i).get("title").toString()))
+                        notesList.add(Note(response.getJSONObject(i).get("title").toString(), response.getJSONObject(i).get("body").toString()))
                     }
                     noteRecyclerView.adapter = NotesAdapter(notesList)
                 }
