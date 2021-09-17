@@ -1,11 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.minote"
