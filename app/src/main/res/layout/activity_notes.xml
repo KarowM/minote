@@ -17,6 +17,18 @@
         android:textSize="32sp">
     </TextView>
 
+    <TextView
+        android:id="@+id/notesEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:text="You have no notes!"
+        android:textColor="@color/purple_700"
+        android:layout_marginTop="84dp"
+        android:textSize="24sp">
+    </TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
