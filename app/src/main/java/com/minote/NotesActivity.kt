@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import kotlin.concurrent.fixedRateTimer
 
 class NotesActivity : AppCompatActivity() {
 
@@ -43,6 +44,7 @@ class NotesActivity : AppCompatActivity() {
                         val s: TextView = findViewById(R.id.notesEmpty)
                         s.visibility = View.GONE
                     }
+                    notesList = ArrayList()
                     for (i in 0 until response.length()) {
                         notesList.add(Note(response.getJSONObject(i).get("title").toString(), response.getJSONObject(i).get("body").toString()))
                     }
@@ -52,7 +54,9 @@ class NotesActivity : AppCompatActivity() {
             { println("Failed to display notes data from API") }
         )
 
-        queue.add(notesRequest)
+        fixedRateTimer("noteRetrievalTimer", false, 0L, 5000) {
+            queue.add(notesRequest)
+        }
     }
 
     private fun openNote() = { item: Note ->
