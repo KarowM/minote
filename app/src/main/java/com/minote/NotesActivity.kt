@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -52,9 +53,11 @@ class NotesActivity : AppCompatActivity() {
     }
 
     private fun openNote() = { item: Note ->
-        println("Clicked note: $item")
         dialog.setContentView(R.layout.note_popup)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
+
+        dialog.findViewById<TextView?>(R.id.popupNoteTitle).text = item.title
+        dialog.findViewById<TextView?>(R.id.popupNoteBody).text = item.body
     }
 }
