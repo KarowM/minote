@@ -40,10 +40,9 @@ class NotesActivity : AppCompatActivity() {
             null,
             { response ->
                 run {
-                    if (response.length() > 0) {
-                        val s: TextView = findViewById(R.id.notesEmpty)
-                        s.visibility = View.GONE
-                    }
+                    val noNotesText: TextView = findViewById(R.id.notesEmpty)
+                    noNotesText.visibility = if (response.length() > 0) View.INVISIBLE else View.VISIBLE
+
                     notesList = ArrayList()
                     for (i in 0 until response.length()) {
                         notesList.add(Note(response.getJSONObject(i).get("title").toString(), response.getJSONObject(i).get("body").toString()))
